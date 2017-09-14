@@ -12,3 +12,20 @@
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+<br>
+<br>
+<div style="border-color: black; border-width: 2px;background-color:yellow;border-style: solid;width: 50vw;padding: 2vh 5vw">
+<h2>Comments</h2>
+<% @post.comments.reverse.each do |c|%>
+<div style="background-color: rgba(0,0,127,0.5);">
+  <h4>Comment By- <%= c.name %></h4>
+  <p><%= c.body %></p>
+</div>
+<% end %>
+</div>
+<br>
+<br>
+<div style="background-color: rgba(0,0,255,0.5);width: 50vw;padding: 2vh 5vw;border-color: black; border-width: 2px;border-style: solid;">
+<h2>New Comment</h2>
+<%= render partial: 'comments/form' %>
+</div>
