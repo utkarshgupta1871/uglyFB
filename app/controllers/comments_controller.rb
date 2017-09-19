@@ -24,18 +24,23 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
-    @comment.post_id = params[:post_id]
-    #you need to assign the post_id not post. Assigning post is not allowed in rails which means-->
-    #@comment.post=params[:post] is invalid
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+    if user_signed_in?
+      @comment = Comment.new(comment_params)
+      @comment.post_id = params[:post_id]
+      @comment.user=current_user
+      #you need to assign the post_id not post. Assigning post is not allowed in rails which means-->
+      #@comment.post=params[:post] is invalid
+      respond_to do |format|
+        if @comment.save
+          format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully created.' }
+          format.json { render :show, status: :created, location: @comment }
+        else
+          format.html { render :new }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_back fallback_location: root_path, notice: 'You need to sign in to comment.'
     end
   end
 
@@ -56,11 +61,15 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    post=@comment.post
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user==@comment.user
+      post=@comment.post
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_back fallback_location: root_path, notice: 'You are not signed in or the comment does not belong to you'
     end
   end
 

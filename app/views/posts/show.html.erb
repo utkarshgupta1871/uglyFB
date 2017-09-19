@@ -17,7 +17,7 @@
 <div id="comment_box">
           <h2 style="margin: 2vh 2vw;">Comments</h2>
           <% @post.comments.each do |c|%>
-          <div id="comments"><h4>Comment By- <%= c.name %></h4>
+          <div id="comments"><h4>Comment By- <%= c.user.name %></h4>
             <p><%= c.body %></p>
             <%= link_to 'Delete', post_comment_path(@post.id,c.id), method: :delete %>
             <hr>
