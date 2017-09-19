@@ -19,42 +19,7 @@
 }
 
 /*posts*/
-#post_box{
-	border-style: solid;border-width: 2px; padding: 0px;width: 60vw;margin: 0px;
-}
-#post_head{
-background-color: blue;color: white;
-text-align: left;padding: 10px;margin: 0px;
-font-size: 2em;
-}
-#post_body{
-background-color: white;margin: 0px;
-text-align: left;padding: 10px 5vh;
-}
-#post_links{
-background-color: #dad6d6;color: grey;
-text-align: left;padding: 10px 5vh;text-decoration: none;font-weight: bold;margin: 0px
-}
 
-#post_links a{
-background-color: #dad6d6;color: grey;
-text-align: left;padding: 10px;text-decoration: none;font-weight: bold;margin: 0px
-}
 
 /*comments*/
-#comment_box{
-	border-color: black; 
-	border-width: 2px;background-color:rgba(255,255,0,0.2);border-style: solid;width: 60vw;padding: 0px;
-}
-#comments{
-	background-color: #dad6d6;color: grey;
-	text-align: left;padding: 0vh 2vw ;text-decoration: none;font-weight: bold;margin: 0px;
-}
-#comments a,h4,hr,p{
-	background-color: #dad6d6;color: grey;
-	text-align: left;text-decoration: none;font-weight: bold;margin: 0px;
-}
-#new_comment{
-	background-color: #dad6d6;color: grey;
-	text-align: left;padding: 2vh 4vw ;text-decoration: none;font-weight: bold;
-}
+

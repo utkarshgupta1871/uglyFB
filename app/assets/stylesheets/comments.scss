@@ -1,3 +1,33 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#comment_box{
+	border-color: black; 
+	border-width: 2px;background-color:rgba(255,255,0,0.2);border-style: solid;width: 60vw;padding: 0px;
+}
+#comments{
+	background-color: #dad6d6;color: grey;
+	text-align: left;padding: 0vh 2vw ;text-decoration: none;font-weight: bold;margin: 0px;
+	a{
+	background-color: #dad6d6;color: grey;
+	text-align: left;text-decoration: none;font-weight: bold;margin: 0px;
+	}
+	h4{
+	background-color: #dad6d6;color: grey;
+	text-align: left;text-decoration: none;font-weight: bold;margin: 0px;
+	}
+	hr{
+	background-color: #dad6d6;color: grey;
+	text-align: left;text-decoration: none;font-weight: bold;margin: 0px;
+	}
+	p{
+	background-color: #dad6d6;color: grey;
+	text-align: left;text-decoration: none;font-weight: bold;margin: 0px;
+	}
+}
+
+#new_comment{
+	background-color: #dad6d6;color: grey;
+	text-align: left;padding: 2vh 4vw ;text-decoration: none;font-weight: bold;
+}

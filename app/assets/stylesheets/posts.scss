@@ -3,3 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#post_box{
+	border-style: solid;border-width: 2px; padding: 0px;width: 60vw;margin: 0px;
+}
+#post_head{
+background-color: blue;color: white;
+text-align: left;padding: 10px;margin: 0px;
+font-size: 2em;
+}
+#post_body{
+background-color: white;margin: 0px;
+text-align: left;padding: 10px 5vh;
+}
+
+#post_links{
+background-color: #dad6d6;color: grey;
+text-align: left;padding: 10px 5vh;text-decoration: none;font-weight: bold;margin: 0px;
+a{background-color: #dad6d6;color: grey;
+text-align: left;padding: 10px;text-decoration: none;font-weight: bold;margin: 0px;	
+}
+}
