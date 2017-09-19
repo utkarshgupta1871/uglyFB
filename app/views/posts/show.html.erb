@@ -14,19 +14,17 @@
 <%= link_to 'Back', posts_path %>
 <br>
 <br>
-<div style="border-color: black; border-width: 2px;background-color:yellow;border-style: solid;width: 50vw;padding: 2vh 5vw">
-<h2>Comments</h2>
-<% @post.comments.each do |c|%>
-<div style="background-color: rgba(0,0,127,0.5);">
-  <h4 style="padding-left: 1 vw;">Comment By- <%= c.name %></h4>
-  <p style="padding-left: 1 vw;"><%= c.body %></p>
-<%= link_to 'Delete', post_comment_path(@post.id,c.id), method: :delete %>
-</div>
-<% end %>
-</div>
-<br>
-<br>
-<div style="background-color: rgba(0,0,255,0.5);width: 50vw;padding: 2vh 5vw;border-color: black; border-width: 2px;border-style: solid;">
-<h2>New Comment</h2>
-<%= render partial: 'comments/form' %>
-</div>
+<div id="comment_box">
+          <h2 style="margin: 2vh 2vw;">Comments</h2>
+          <% @post.comments.each do |c|%>
+          <div id="comments"><h4>Comment By- <%= c.name %></h4>
+            <p><%= c.body %></p>
+            <%= link_to 'Delete', post_comment_path(@post.id,c.id), method: :delete %>
+            <hr>
+          </div>
+          <% end %>
+          <div id="new_comment">
+          <h3 style="margin:0px;">New Comment</h4>
+          <%= render partial: 'comments/form' %>  
+          </div>
+      </div>
