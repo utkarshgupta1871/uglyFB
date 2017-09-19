@@ -20,6 +20,7 @@
 <div style="background-color: rgba(0,0,127,0.5);">
   <h4 style="padding-left: 1 vw;">Comment By- <%= c.name %></h4>
   <p style="padding-left: 1 vw;"><%= c.body %></p>
+<%= link_to 'Delete', post_comment_path(@post.id,c.id), method: :delete %>
 </div>
 <% end %>
 </div>

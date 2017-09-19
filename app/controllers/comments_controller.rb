@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     #@comment.post=params[:post] is invalid
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_path(@comment.post), notice: 'Comment was successfully created.' }
+        format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class CommentsController < ApplicationController
     post=@comment.post
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to post_path(post), notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,7 +67,7 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:comment_id])
+      @comment = Comment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
