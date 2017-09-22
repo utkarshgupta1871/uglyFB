@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'likes/create/:id'=>'likes#create', as: :like
+  delete 'likes/destroy/:id'=>'likes#destroy', as: :unlike
+
   root 'posts#index'
   get 'usersIndex'=>'friendships#index', as: :allUsers
   get 'friendships/addFriend/:id'=>'friendships#addFriend', as: :addFriend
