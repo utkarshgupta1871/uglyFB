@@ -9,16 +9,19 @@
   </head>
 
   <body style="background-color: rgba(255,255,127,0.5);padding: 0px;margin: 0px;">
-  <p style="background-color:rgb(0,0,255);padding: 0vh 5vw; font-size: 3em;height: 10vh;line-height: 10vh;color: white;font-family: fantasy;font-weight: bolder;margin: 0px;">UglyFB</p>
-  <main style="margin: 5vh 5vw;">
-  <h2> <%= link_to "Home", root_path %> &nbsp|
+  <nav><div style="display: inline-block;">UglyFB</div>
+  <div id="navlinks" >
+  <%= link_to "Home", root_path %> &nbsp|
 <% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <br><br>Hello <%= current_user.name%> !
+  <%= link_to "Find Friends", allUsers_path%> |
+  <%= link_to "My Friends", myFriends_path%> |
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %> |
+  Hello <%= current_user.name%> !
   <% else %>
   <%= link_to "Sign in", new_user_session_path%> |&nbsp
   <%= link_to "Sign up", new_user_registration_path %>
-  <% end %> </h2>
+  <% end %></div> </nav>
+    <main style="margin: 5vh 5vw;">
     <%= yield %>
     </main>
   </body>

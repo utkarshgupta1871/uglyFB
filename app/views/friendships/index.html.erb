@@ -1,0 +1,11 @@
+<h1>All users</h1>
+<% @users.each do |user| %>
+<p><% if user!=current_user %>
+<%= user.name %> &nbsp
+<% if !@friendList.include?(user) %>
+|<%= link_to 'Add Friend', addFriend_path(user.id) %>|
+<% end %>
+<% end %>
+	
+</p>
+<% end %>
