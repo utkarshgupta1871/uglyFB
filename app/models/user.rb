@@ -13,24 +13,24 @@ class User < ApplicationRecord
 
 	def allFriends
 		list=[]
-		Friendship.where('user_id== ? and confirmation==?', self.id,true).each do |i|
+		Friendship.where('user_id=? and confirmation=?', self.id,true).each do |i|
 			list.push i.friend
 		end
-		Friendship.where('friend_id== ? and confirmation==?', self.id,true).each do |i|
+		Friendship.where('friend_id=? and confirmation=?', self.id,true).each do |i|
 			list.push i.user
 		end
 		return list
 	end
 	def pendingFriends
 		list=[]
-		Friendship.where('user_id== ? and confirmation==?', self.id,false).each do |i|
+		Friendship.where('user_id=? and confirmation=?', self.id,false).each do |i|
 			list.push i.friend
 		end
 		return list
 	end
 	def friendRequests
 		list=[]
-		Friendship.where('friend_id== ? and confirmation==?', self.id,false).each do |i|
+		Friendship.where('friend_id=? and confirmation=?', self.id,false).each do |i|
 			list.push i.user
 		end
 		return list
