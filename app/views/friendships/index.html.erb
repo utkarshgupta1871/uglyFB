@@ -1,11 +1,20 @@
-<h1>All users</h1>
+<h1>Find new Friends</h1>
 <% @users.each do |user| %>
-<p><% if user!=current_user %>
+<p><% if user!=current_user and !@friendList.include?(user) and !@requestsList.include?(user)%>
 <%= user.name %> &nbsp
-<% if !@friendList.include?(user) %>
+<% if !@pendingList.include?(user)%>
 |<%= link_to 'Add Friend', addFriend_path(user.id) %>|
+<% else %> |Friend Request already sent|
 <% end %>
 <% end %>
-	
 </p>
+<% end %>
+<br>
+<br>
+<br>
+<h1>Pending Friend Requests</h1>
+<% @requestsList.each do |user| %>
+<p><%= user.name %> &nbsp|
+<%= link_to 'Confirm', confirm_request_path(user.id) %>
+|</p>
 <% end %>
