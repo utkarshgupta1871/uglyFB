@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+<button id="New_post_button">New Post</button>
+<% post=Post.new %>
+<div id="new_p" style="display: none;"><%= render 'posts/form', post: @post %></div> 
+
+
 <h1>Posts</h1>
     <% @posts.reverse.each do |post| %>
-        <div id="post_box" >
+        <div id="post_box_<%="#{post.id}"%>" class="post_box">
         <p id="post_head"> <%= post.user.name %> posted a new update - <%= post.title %></p>
         <p id="post_body"> <%= post.content %></p>
         <p id="post_links"><%= link_to 'Show', post %>
         <% if user_signed_in? %>
           <% if !Like.already_liked(current_user.id,post.id) %>
-            |<%= link_to 'Like', like_path(post.id), method: :post %>
+            |<%= link_to 'Like', like_path(post.id), remote: true, id: "Like_button_"+"#{post.id}", method: :post %>
           <% else %>
-            |<%= link_to 'Unlike', unlike_path(Like.find_by(user_id:current_user.id,post_id:post.id).id), method: :delete %>
+            |<%= link_to 'Unlike', unlike_path(Like.find_by(user_id:current_user.id,post_id:post.id).id), id: "Unlike_button_"+"#{post.id}", remote: true, method: :delete %>
           <% end %>
-        <% end %>(<%= post.likes.length %> Likes)
+        <% end %>(<span id=<%="likes_count_"+"#{post.id}"%>><%= post.likes.length %></span> Likes)
         <% if user_signed_in? and current_user==post.user %>
           |<%= link_to 'Edit', edit_post_path(post) %>
           |<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -20,18 +25,18 @@
           (<%= post.comments.length %> Comments)
         </p>
         </div>
-      <div id="comment_box">
+      <div id="comment_box_<%= post.id%>" class="comment_box">
           <h2 style="margin: 2vh 2vw;">Comments</h2>
           <% post.comments.each do |c|%>
-          <div id="comments"><h4>Comment By- <%=c.user.name%></h4>
+          <div id="comment_<%= c.id%>" class="comments"><h4>Comment By- <%=c.user.name%></h4>
             <p><%= c.body %></p>
-            <%= link_to 'Delete', post_comment_path(post.id,c.id), method: :delete %>
+            <%= link_to 'Delete', post_comment_path(post.id,c.id), remote: true, method: :delete %>
             <hr>
           </div>
           <% end %>
           <% @post=post %>
           <% @comment= Comment.new %>
-          <div id="new_comment">
+          <div id="new_comment_box">
           <h3 style="margin:0px;">New Comment</h4>
           <%= render partial: 'comments/form' %>  
           </div>
@@ -40,5 +45,3 @@
 <% end %>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>

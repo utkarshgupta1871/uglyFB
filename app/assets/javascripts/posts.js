@@ -1,0 +1,1 @@
+window.addEventListener('load',()=>{$('#New_post_button').on('click', function() {$('#new_p').slideToggle();});})

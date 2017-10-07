@@ -1,0 +1,4 @@
+$("#Like_button_"+ <%= @like.post_id %>).replaceWith('<%= link_to "Unlike", unlike_path(Like.find(@like.id)), id: "Unlike_button_"+"#{@like.post_id}", remote: true, method: :delete %>');
+likes=+$("#likes_count_"+ <%= @like.post_id %>).text();
+likes++;
+$("#likes_count_"+ <%= @like.post_id %>).text(likes);

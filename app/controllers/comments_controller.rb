@@ -33,7 +33,8 @@ class CommentsController < ApplicationController
       respond_to do |format|
         if @comment.save
           format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully created.' }
-          format.json { render :show, status: :created, location: @comment }
+          format.json { render :show, status: :created, location: @comment}
+          format.js
         else
           format.html { render :new }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -67,6 +68,7 @@ class CommentsController < ApplicationController
       respond_to do |format|
         format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
         format.json { head :no_content }
+        format.js
       end
     else
       redirect_back fallback_location: root_path, notice: 'You are not signed in or the comment does not belong to you'
@@ -84,3 +86,4 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body, :post, :name)
     end
 end
+  

@@ -1,0 +1,1 @@
+$('#comment_box_<%= @comment.post_id%>').find('#new_comment_box').before('<div id="comment_<%= @comment.id%>" class="comments"><h4>Comment By- <%=@comment.user.name%></h4><p><%=@comment.body%></p><hr></div>')

@@ -14,16 +14,16 @@
 <%= link_to 'Back', posts_path %>
 <br>
 <br>
-<div id="comment_box">
+<div id="comment_box_<%= @post.id%>">
           <h2 style="margin: 2vh 2vw;">Comments</h2>
           <% @post.comments.each do |c|%>
-          <div id="comments"><h4>Comment By- <%= c.user.name %></h4>
+          <div id="comment_<%= c.id%>" class="comments"><h4>Comment By- <%= c.user.name %></h4>
             <p><%= c.body %></p>
-            <%= link_to 'Delete', post_comment_path(@post.id,c.id), method: :delete %>
+            <%= link_to 'Delete', post_comment_path(@post.id,c.id), remote: true, method: :delete %>
             <hr>
           </div>
           <% end %>
-          <div id="new_comment">
+          <div id="new_comment_box">
           <h3 style="margin:0px;">New Comment</h4>
           <%= render partial: 'comments/form' %>  
           </div>

@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+//window.addEventListener('load',()=>{$('#New_post_button').on('click', function() {$('#new_p').slideToggle();});})
