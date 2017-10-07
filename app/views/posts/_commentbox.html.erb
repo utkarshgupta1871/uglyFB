@@ -1,0 +1,5 @@
+<div id="comment_<%= c.id%>" class="comments"><h4>Comment By- <%=c.user.name%></h4>
+        <p><%= c.body %></p>
+        <%= link_to "Delete", post_comment_path(post.id,c.id), remote: true, method: :delete %>
+        <hr>
+</div>

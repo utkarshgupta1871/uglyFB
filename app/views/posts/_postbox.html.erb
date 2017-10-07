@@ -19,11 +19,7 @@
   <div id="comment_box_<%= post.id%>" class="comment_box">
     <h2 style="margin: 2vh 2vw;">Comments</h2>
     <% post.comments.each do |c|%>
-      <div id="comment_<%= c.id%>" class="comments"><h4>Comment By- <%=c.user.name%></h4>
-        <p><%= c.body %></p>
-        <%= link_to "Delete", post_comment_path(post.id,c.id), remote: true, method: :delete %>
-        <hr>
-      </div>
+      <%= render "posts/commentbox", c: c, post: post %>
     <% end %>
     <% @post=post %>
     <% @comment= Comment.new %>
