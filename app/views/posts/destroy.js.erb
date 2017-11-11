@@ -1,1 +1,2 @@
-$('#post_box_<%= @post.id%>').fadeOut()
+$('#post_box_<%= @post.id%>').fadeOut();
+noty({text:'Post Deleted successfully', timeout:2000, type:'alert'});

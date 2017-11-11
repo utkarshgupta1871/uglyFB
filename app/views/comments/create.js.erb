@@ -1,1 +1,2 @@
 $('#comment_box_<%= @comment.post_id%>').find('#new_comment_box_<%=@comment.post_id%>').before('<%= escape_javascript render "posts/commentbox", c: @comment, post: @comment.post %>')
+noty({text:'Your comment has been created successfully!', timeout:2000, type:'success'});

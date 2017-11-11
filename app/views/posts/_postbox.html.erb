@@ -11,7 +11,7 @@
   <% end %>(<span id=<%="likes_count_"+"#{post.id}"%>><%= post.likes.length %></span> Likes)
   <% if user_signed_in? and current_user==post.user %>
     |<%= link_to "Edit", edit_post_path(post) %>
-    |<%= link_to "Destroy", post, method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+    |<%= link_to "Destroy", post, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
   <% end %>
     (<%= post.comments.length %> Comments)
   </p>

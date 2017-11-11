@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   delete 'likes/destroy/:id'=>'likes#destroy', as: :unlike
 
   root 'posts#index'
+  get 'friendships/findFriends'=>'friendships#findFriends'
   get 'usersIndex'=>'friendships#index', as: :allUsers
   get 'friendships/addFriend/:id'=>'friendships#addFriend', as: :addFriend
   get 'friendships/confirmRequest/:id'=>'friendships#confirmRequest', as: :confirm_request

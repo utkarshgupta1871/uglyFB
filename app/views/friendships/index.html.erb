@@ -1,9 +1,13 @@
 <h1>Find new Friends</h1>
+<div>
+	<input id="friendSearch">
+</div>
+
 <% @users.each do |user| %>
 <p><% if user!=current_user and !@friendList.include?(user) and !@requestsList.include?(user)%>
 <%= user.name %> &nbsp
 <% if !@pendingList.include?(user)%>
-|<%= link_to 'Add Friend', addFriend_path(user.id) %>|
+|<%= link_to 'Add Friend', addFriend_path(user.id), remote: true, id: "user_"+"#{user.id}" %>|
 <% else %> |Friend Request already sent|
 <% end %>
 <% end %>
@@ -14,7 +18,7 @@
 <br>
 <h1>Pending Friend Requests</h1>
 <% @requestsList.each do |user| %>
-<p><%= user.name %> &nbsp|
-<%= link_to 'Confirm', confirm_request_path(user.id) %>
+<p id=<%="request_"+"#{user.id}"%>><%= user.name %> &nbsp|
+<%= link_to 'Confirm', confirm_request_path(user.id), remote: true%>
 |</p>
 <% end %>

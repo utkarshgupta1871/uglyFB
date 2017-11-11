@@ -15,4 +15,17 @@
 //= require turbolinks
 //= require_tree .
 
-//window.addEventListener('load',()=>{$('#New_post_button').on('click', function() {$('#new_p').slideToggle();});})
+// window.addEventListener('load',()=>{noty({text:'Noty working', type: 'information', timeout:false, 
+// 	buttons:[
+// 	{addClass: 'btn btn-primary', text:'Yes', onClick: ($noty)=>{
+// 		//$noty.close();
+// 		noty({text:'You pressed Yes', timeout:2000, type:'success'});
+// 		}
+// 	},
+// 	{addClass: 'btn btn-danger', text:'No', onClick: ($noty)=>{
+// 		//$noty.close();
+// 		noty({text:'You pressed No', timeout:2000, type: 'error'});
+// 		}
+// 	},
+
+// ]});})
