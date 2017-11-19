@@ -1,5 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<div><img src="" id="profile_pic"></div>
+<input type="file" id="source">
+<script type="text/javascript">
+	$('#source').change(()=>{
+		let readURL=(x)=>{
+			let fReader=new FileReader();
+			fReader.readAsDataURL(x.files[0]);
+			fReader.onloadend=(event)=>{
+				$('#profile_pic').attr('src', event.target.result)
+			}
+
+		}		
+		readURL($('#source')[0]);
+	})
+</script>
+
 <button id="New_post_button">New Post</button>
 <% post=Post.new %>
 <div id="new_p" style="display: none;"><%= render 'posts/form', post: @post %></div> 
